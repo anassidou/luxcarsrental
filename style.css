@@ -1,0 +1,972 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+
+
+/* Header - شريط التنقل العلوي */
+header {
+    background: transparent; /* خلفية شفافة في البداية */
+    color: white; /* لون النص أبيض */
+    padding: 0.5rem 0; /* مساحة داخلية عمودية - يتغير عند التمرير */
+    position: fixed; /* ثابت في أعلى الصفحة */
+    width: 100%; /* عرض كامل */
+    top: 0; /* في أعلى الصفحة */
+    z-index: 1000; /* فوق جميع العناصر */
+    backdrop-filter: none; /* بدون تأثير ضبابي في البداية */
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* انتقال سلس مع تأثير bounce */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* تأثيرات إضافية للقائمة عند التوسيط */
+nav ul {
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+nav ul li {
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.logo {
+    font-size: "3"rem;
+    font-weight: 900;
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(255,215,0,0.5);
+}
+
+/* CSS للوجو عند إضافة الصورة */
+.logo {
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform-origin: center;
+}
+
+.logo-img {
+    height: 100px;
+    width: auto;
+    filter: brightness(1.2);
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.4);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 2rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+    position: relative;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 25px;
+}
+
+nav ul li a:hover {
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255,215,0,0.8);
+    background: rgba(255, 215, 0, 0.2);
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    perspective: 1000px;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: -1;
+}
+
+.hero-3d {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* تم حذف السيارة العائمة */
+
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(2px 2px at 20px 30px, #ffd700, transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,215,0,0.8), transparent),
+                radial-gradient(1px 1px at 90px 40px, #ffed4e, transparent);
+    background-size: 200px 100px;
+    animation: sparkle 3s linear infinite;
+}
+
+@keyframes sparkle {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-100px); }
+}
+
+.glitch {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    position: relative;
+    animation: glitch 2s infinite;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+.fade-in {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.pulse {
+    /* تم إزالة تأثير النبض */
+}
+
+.cta-btn, .rent-btn {
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    color: #000;
+    padding: 15px 35px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    display: inline-block;
+    pointer-events: auto;
+    z-index: 10;
+    position: relative;
+}
+
+.cta-btn:hover, .rent-btn:hover {
+    background: #ffed4e;
+}
+
+.cars-section, .about-section {
+    padding: 6rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+}
+
+.cars-section h2, .about-section h2 {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 4rem;
+    background: linear-gradient(45deg, #333, #666);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.car-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+    perspective: 1000px;
+}
+
+.card-3d {
+    height: 400px;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.card-3d:hover {
+    animation: flip-2-ver-right-1 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+.card-3d {
+    transition: all 0.3s ease;
+}
+
+.shadow-drop-2-center {
+    -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes shadow-drop-2-center {
+    0% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+    100% {
+        -webkit-transform: translateZ(50px);
+        transform: translateZ(50px);
+        -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+        box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+    }
+}
+
+@keyframes shadow-drop-2-center {
+    0% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+    100% {
+        -webkit-transform: translateZ(50px);
+        transform: translateZ(50px);
+        -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+        box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+    }
+}
+
+.card-3d,
+.more-cars-hero ~ .cars-section .card-3d {
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.card-inner {
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+.card-3d .card-inner {
+    transform-style: preserve-3d;
+}
+
+.more-cars-hero ~ .cars-section .card-3d {
+    height: 400px;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.more-cars-hero ~ .cars-section .card-3d:hover {
+    animation: flip-2-ver-right-1 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+.more-cars-hero ~ .cars-section .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.more-cars-hero ~ .cars-section .card-front,
+.more-cars-hero ~ .cars-section .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+.more-cars-hero ~ .cars-section .card-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+.card-front {
+    background: white;
+}
+
+.card-back {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.card-front img {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s;
+}
+
+.card-front img[alt="Maserati GranTurismo"] {
+    object-position: center;
+    object-fit: cover;
+}
+
+.card-front img[alt="Bugatti Chiron"] {
+    object-position: center;
+    object-fit: cover;
+}
+
+.card-front img[alt="Jaguar F-Type"] {
+    object-position: center;
+    object-fit: cover;
+}
+
+.card-front img[alt="Koenigsegg Regera"] {
+    object-position: center;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.card-content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.price {
+    font-size: 1.8rem;
+    color: #ffd700;
+    font-weight: 900;
+}
+
+.card-back h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.card-back ul {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.card-back ul li {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.feature-3d {
+    background: white;
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+    transform-style: preserve-3d;
+}
+
+.feature-3d:hover {
+    transform: translateY(-10px) rotateX(5deg);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+.feature h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.whatsapp-cta {
+    background: white;
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.whatsapp-cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
+    animation: pulse-bg 4s ease-in-out infinite;
+}
+
+@keyframes pulse-bg {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.1); opacity: 0.1; }
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.cta-text h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #333, #666);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cta-text p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.benefits {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.benefits span {
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    color: #333;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.whatsapp-btn {
+    background: #25D366;
+    color: white;
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s;
+    box-shadow: 0 10px 30px rgba(37,211,102,0.3);
+}
+
+.whatsapp-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(37,211,102,0.4);
+    background: #128C7E;
+}
+
+.whatsapp-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+footer {
+    background: #000;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+.footer-content p {
+    margin: 0;
+    opacity: 0.8;
+}
+
+.car-carousel {
+    background: transparent;
+    padding: 2rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.carousel-track {
+    display: inline-flex;
+    animation: scroll 20s linear infinite;
+}
+
+.carousel-track img {
+    width: 200px;
+    height: 120px;
+    object-fit: contain;
+    margin-right: 3rem;
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(255,215,0,0.3);
+    transition: transform 0.3s;
+}
+
+.carousel-track img:hover {
+    transform: scale(1.05);
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.load-more-container {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.load-more-btn {
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    color: #000;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.load-more-btn:hover {
+    background: #ffed4e;
+    transform: translateY(-2px);
+}
+
+.more-cars-hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: rgba(255, 255, 255, 0);
+    margin-top: 0;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+}
+
+.more-cars-hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+.more-cars-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: -1;
+}
+
+.more-cars-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.more-cars-hero p {
+    font-size: 1.2rem;
+}
+
+.back-container {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.back-btn {
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    color: #000;
+    padding: 15px 40px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+}
+
+.back-btn:hover {
+    background: #ffed4e;
+    transform: translateY(-2px);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 5;
+}
+
+.scroll-arrow {
+    width: 30px;
+    height: 50px;
+    border: 2px solid #ffd700;
+    border-radius: 25px;
+    position: relative;
+    margin: 0 auto 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.scroll-arrow:hover {
+    border-color: #ffed4e;
+    transform: scale(1.1);
+}
+
+.scroll-arrow span {
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: #ffd700;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scroll-down 2s infinite;
+}
+
+.scroll-arrow span:nth-child(1) {
+    top: 8px;
+    animation-delay: 0s;
+}
+
+.scroll-arrow span:nth-child(2) {
+    top: 16px;
+    animation-delay: 0.3s;
+}
+
+.scroll-arrow span:nth-child(3) {
+    top: 24px;
+    animation-delay: 0.6s;
+}
+
+@keyframes scroll-down {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px);
+    }
+}
+
+.scroll-text {
+    color: #ffd700;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: pulse-text 2s infinite;
+}
+
+@keyframes pulse-text {
+    0%, 100% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Header mobile adjustments */
+    header {
+        padding: 0.3rem 0;
+    }
+    
+    nav {
+        padding: 0 1rem;
+    }
+    
+    nav ul li {
+        margin-left: 1rem;
+    }
+    
+    nav ul li a {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .logo-img {
+        height: 50px;
+    }
+    
+    /* Hero section mobile */
+    .glitch {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content {
+        padding: 0 1rem;
+    }
+    
+    .more-cars-hero {
+        height: 100vh;
+    }
+    
+    /* Car grid mobile */
+    .car-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .card-3d {
+        height: 350px;
+    }
+    
+    /* Features mobile */
+    .features {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    /* CTA section mobile */
+    .cta-text h2 {
+        font-size: 2rem;
+    }
+    
+    .benefits {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .whatsapp-btn {
+        padding: 0.8rem 2rem;
+        font-size: 1.1rem;
+    }
+    
+    /* Scroll indicator mobile */
+    .scroll-indicator {
+        bottom: 20px;
+    }
+    
+    .scroll-text {
+        font-size: 0.8rem;
+    }
+    
+    /* Carousel mobile */
+    .carousel-track img {
+        width: 150px;
+        height: 90px;
+        margin-right: 2rem;
+    }
+}
+
+/* تأثيرات بصرية إضافية لصفحة المزيد من السيارات */
+.bounce-animation {
+    animation: bounce-indicator 2s infinite;
+}
+
+.glow-effect {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    animation: glow-pulse 2s infinite alternate;
+}
+
+.pulse-text {
+    animation: text-pulse 1.5s infinite;
+}
+
+.arrow-hint {
+    font-size: 2rem;
+    color: #ffd700;
+    margin-top: 10px;
+    animation: arrow-bounce 1s infinite;
+}
+
+@keyframes bounce-indicator {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+    }
+    40% {
+        transform: translateY(-10px) translateX(-50%);
+    }
+    60% {
+        transform: translateY(-5px) translateX(-50%);
+    }
+}
+
+@keyframes glow-pulse {
+    0% {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(255, 215, 0, 1);
+    }
+}
+
+@keyframes text-pulse {
+    0%, 100% {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes arrow-bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@media (max-width: 480px) {
+    /* Extra small screens */
+    .glitch {
+        font-size: 2rem;
+    }
+    
+    nav ul li {
+        margin-left: 0.5rem;
+    }
+    
+    nav ul li a {
+        padding: 4px 8px;
+        font-size: 0.8rem;
+    }
+    
+    .logo-img {
+        height: 40px;
+    }
+    
+    .card-3d {
+        height: 300px;
+    }
+    
+    .carousel-track img {
+        width: 120px;
+        height: 70px;
+        margin-right: 1.5rem;
+    }
+    
+    .arrow-hint {
+        font-size: 1.5rem;
+    }
+}
